@@ -1,0 +1,14 @@
+{
+  "author": "Umidjon Rasulov",
+  "affiliation": "Inha University in Tashkent (SOCIE)",
+  "runs": [
+    {
+      "N": 1048576,
+      "elapsed_seconds": 24.1269,
+      "count_ones": 524976,
+      "density": 0.500656,
+      "max_lil_ratio": 1.23205,
+      "max_lil_step": 24979
+    }
+  ]
+}

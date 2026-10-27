@@ -1,0 +1,18 @@
+# Build artifacts
+*.obj
+*.exe
+*.pdb
+*.ilk
+.venv/
+__pycache__/
+*.pyc
+
+# Lean build artifacts
+Rule30PrizeKit/lean/.lake/
+Rule30PrizeKit/.lake/
+Rule30PrizeKit/build/
+
+# Keep all PDFs, source files, data, and docs
+!paper/*.pdf
+!sim/cpp/*.cpp
+!data/*.json

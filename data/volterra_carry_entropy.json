@@ -1,0 +1,9 @@
+{
+  "author": "Umidjon Rasulov",
+  "affiliation": "Inha University in Tashkent (SOCIE)",
+  "N": 50000,
+  "center_entropy_8": 7.99595,
+  "carry_entropy_8": 5.58316,
+  "center_linear_complexity_10000": 5001,
+  "carry_linear_complexity_10000": 5001
+}

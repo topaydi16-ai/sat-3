@@ -1,0 +1,260 @@
+{
+  "author": "Umidjon Rasulov",
+  "affiliation": "Inha University in Tashkent (SOCIE)",
+  "z5": 53207,
+  "z5_parity": 0,
+  "total_internal_nodes": 15,
+  "total_leaves": 16,
+  "min_leaf_j": 87866,
+  "max_leaf_j": 894234,
+  "nodes": [
+    {
+      "path": "root",
+      "zero_j": 53207,
+      "weight": 6,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "0",
+      "zero_j": 58286,
+      "weight": 10,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "00",
+      "zero_j": 229337,
+      "weight": 7,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "01",
+      "zero_j": 87866,
+      "weight": 5,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "1",
+      "zero_j": 72575,
+      "weight": 10,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "10",
+      "zero_j": 291256,
+      "weight": 5,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "11",
+      "zero_j": 165748,
+      "weight": 6,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "110",
+      "zero_j": 174449,
+      "weight": 6,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "1100",
+      "zero_j": 179399,
+      "weight": 6,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "11000",
+      "zero_j": 271595,
+      "weight": 5,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "11001",
+      "zero_j": 196188,
+      "weight": 11,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "1101",
+      "zero_j": 243767,
+      "weight": 6,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "11010",
+      "zero_j": 253536,
+      "weight": 11,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "11011",
+      "zero_j": 350243,
+      "weight": 12,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "110110",
+      "zero_j": 445474,
+      "weight": 10,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "1101100",
+      "zero_j": 482608,
+      "weight": 8,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "11011000",
+      "zero_j": 527723,
+      "weight": 9,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "11011001",
+      "zero_j": 603582,
+      "weight": 8,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "110110010",
+      "zero_j": 634885,
+      "weight": 13,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "110110011",
+      "zero_j": 645654,
+      "weight": 7,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "1101101",
+      "zero_j": 485619,
+      "weight": 8,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "11011010",
+      "zero_j": 555812,
+      "weight": 7,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "11011011",
+      "zero_j": 537692,
+      "weight": 6,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "110110110",
+      "zero_j": 563842,
+      "weight": 8,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "1101101100",
+      "zero_j": 760454,
+      "weight": 10,
+      "parity": 0,
+      "is_leaf": false,
+      "doubles_to": 16
+    },
+    {
+      "path": "11011011000",
+      "zero_j": 770531,
+      "weight": 11,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "11011011001",
+      "zero_j": 894234,
+      "weight": 11,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "1101101101",
+      "zero_j": 575210,
+      "weight": 9,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "110110111",
+      "zero_j": 667051,
+      "weight": 9,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "110111",
+      "zero_j": 551909,
+      "weight": 7,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    },
+    {
+      "path": "111",
+      "zero_j": 183183,
+      "weight": 11,
+      "parity": 1,
+      "is_leaf": true,
+      "doubles_to": 32
+    }
+  ]
+}
