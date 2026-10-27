@@ -503,42 +503,63 @@ eg D_{j-2}(t_0)$.
 
 ---
 
-## Phase 24: Independent Verification by Claude (Anthropic AI Model), 2026-10-28
+## Phase 24: Independent Computational Check by Claude (Anthropic AI Model), 2026-10-28
 
 Independent computational checks were conducted by Claude (Anthropic AI model) in a direct simulation session on October 28, 2026, using the standalone verification suite [`sim/python/claude_independent_verification.py`](file:///x:/MathSAT-3/rule30-research/sim/python/claude_independent_verification.py).
 
-### 1. Scope of What Was Independently Verified
-1. **Zero Diagonals up to $j = 500,000$ (Finite Window)**:
-   - Verified by exact strip simulation against brute-force 2D Rule 30 that the **only** zero diagonals for $j \le 500,000$ in the observation window $t = 750,000 \dots 770,000$ are:
-     $$z \in \{2, 7, 28, 399, 53207, 58286, 87866\}$$
-   - Confirmed there are zero zero diagonals in $130,000 < j \le 250,000$ and $250,000 < j \le 500,000$.
-2. **Double-Blind 32-Bit Hex Words & Periods ($j = 100k, 150k, 200k, 250k$)**:
-   - Claude independently measured each diagonal over the final 8,192 steps (at $t = 400,000$):
-     - $D_{100,000}$: Period = **32**, Weight = **12**, Canonical Hex Word = **`0x838090f5`** (LSB-first)
-     - $D_{150,000}$: Period = **32**, Weight = **12**, Canonical Hex Word = **`0xc15744c0`** (LSB-first)
-     - $D_{200,000}$: Period = **32**, Weight = **16**, Canonical Hex Word = **`0x30a8df27`** (LSB-first)
-     - $D_{250,000}$: Period = **32**, Weight = **16**, Canonical Hex Word = **`0xa6782e36`** (LSB-first)
-   - 100% exact bit-for-bit match with the agent's far-field predictions.
-3. **Cryptographic Commitment Hash**:
-   - Verified that the SHA-256 hash of:
-     `"Rule 30 Prediction by Umidjon Rasulov: For the single-cell initial condition, in the range 130000 < j <= 250000, there are exactly ZERO zero diagonals. The set of zero diagonals is EMPTY."`
-     evaluates to `4a21896fe6e5d0f8cbd71f43cae38d183a349b34c339eb0fea6f76935d406dec`.
-4. **Transient Freezing Curve Offset**:
-   - Measured the last-1 step times for the three large zero diagonals:
+* **Script SHA-256 Hash**: `e2193ef2feb1e59b9bd6226854623674ff5fec93697d6ba6be93abbb538d7aad` (100% verified byte-for-byte intact).
+* **Nature of Review**: This was an **independent computational check** by an AI model, not an academic peer review. Claude did not review the formal Lean 4 proofs, paper narrative, or theoretical methods.
+
+### 1. Reproduction Commands & Reference Outputs
+Anyone can reproduce every single measurement using the exact commands and parameters from the script docstring:
+
+1. **Selftest (Strip Simulation vs 2D Brute-Force Rule 30)**:
+   ```bash
+   python3 claude_independent_verification.py selftest
+   ```
+   *Reference Output*: `selftest OK: strip simulation == brute-force 2D Rule 30 for t <= 300`
+
+2. **Scan of Zero Diagonals up to $j = 500,000$**:
+   ```bash
+   python3 claude_independent_verification.py scan --K 500000 --T0 750000 --T1 770000
+   ```
+   *Reference Output*: `diagonals j <= 500000 with no 1s in window t = [750000, 770000]: [2, 7, 28, 399, 53207, 58286, 87866]`  
+   *Note*: Confirmed zero zero diagonals in $130,000 < j \le 250,000$ and $250,000 < j \le 500,000$.
+
+3. **Pre-Committed Blind Word Predictions ($j = 100k, 150k, 200k, 250k$)**:
+   ```bash
+   python3 claude_independent_verification.py words --j 100000 150000 200000 250000 --T1 400000
+   ```
+   *Reference Output*:
+   - `D_100000: period = 32, weight = 12, canonical word = 0x838090f5 (LSB-first)`
+   - `D_150000: period = 32, weight = 12, canonical word = 0xc15744c0 (LSB-first)`
+   - `D_200000: period = 32, weight = 16, canonical word = 0x30a8df27 (LSB-first)`
+   - `D_250000: period = 32, weight = 16, canonical word = 0xa6782e36 (LSB-first)`  
+   *Note*: This was a blind test in the precise sense that the agent posted the four 32-bit word predictions before Claude ran the simulation; all four measured 32-bit cyclic words matched exactly.
+
+4. **Parity Constant $C(z)$ Across All Seven Zero Diagonals**:
+   ```bash
+   python3 claude_independent_verification.py parity --z 2 7 28 399 53207 58286 87866 --T 125000
+   ```
+   *Reference Output*: $C(z) = D_{z+1}(t) \oplus igoplus_{s < t} D_{z-1}(s)$ equals:
+   `1, 0, 0, 0, 0, 1, 0` for $z = 2, 7, 28, 399, 53207, 58286, 87866$.  
+   *Note*: Because $C(z) = 1$ at $z=2$ and $z=58,286$, the plain transient parity sum gives the complement bit at these two points. $C(z)$ was computed as an empirical test quantity, and predicting this constant *a priori* without running the 2D lattice transient remains an open problem.
+
+5. **Cryptographic Commitment Hash Verification**:
+   ```bash
+   python3 claude_independent_verification.py hash "Rule 30 Prediction by Umidjon Rasulov: For the single-cell initial condition, in the range 130000 < j <= 250000, there are exactly ZERO zero diagonals. The set of zero diagonals is EMPTY."
+   ```
+   *Reference Output*: `4a21896fe6e5d0f8cbd71f43cae38d183a349b34c339eb0fea6f76935d406dec`
+
+6. **Transient Slope and Affine Offset**:
+   - Last-1 step times for the three large zero diagonals:
      - $z = 53,207 \implies t = 71,115 = (4/3)j + 172$
      - $z = 58,286 \implies t = 77,909 = (4/3)j + 194$
      - $z = 87,866 \implies t = 117,323 = (4/3)j + 168$
-   - Confirmed an affine fit $t_{\text{freeze}}(j) pprox rac{4}{3} j + 170$ within 25 steps.
+   - Confirms an affine fit $t_{\text{freeze}}(j) pprox rac{4}{3} j + 170$ within about 25 steps.
 
-### 2. Open Problem: Boundary Parity Test Quantity $C(z)$
-Claude evaluated the parity test quantity:
-$$C(z) = D_{z+1}(t) \oplus igoplus_{s < t} D_{z-1}(s)$$
-for $t$ after $D_z$'s last 1. Across all seven zero diagonals:
-$$C(2)=1, \quad C(7)=0, \quad C(28)=0, \quad C(399)=0, \quad C(53207)=0, \quad C(58286)=1, \quad C(87866)=0.$$
-Because $C(z) = 1$ at $z=2$ and $z=58,286$, the plain transient parity sum gives the complement bit at these two points. A closed-form rule predicting $C(z)$ *a priori* without running the 2D transient remains an open problem.
-
-### 3. Explicit Epistemological Boundary (What Was Not Checked by Claude)
-- Claude did NOT verify the full combinatorial tree solver or universal theorems (such as "every branch doubles by $j = 894,234$").
+### 2. Explicit Epistemological Boundary (What Was Not Checked by Claude)
+- Claude did NOT verify the full quotient-ring combinatorial tree solver or universal theorems (such as "every branch doubles by $j = 894,234$").
 - Claude did NOT verify the repository contents or Lean 4 proofs.
 - Claude did NOT verify whether diagonals remain zero infinitely beyond the finite observation windows.
 - All empirical confirmations represent rigorous finite-window measurements.
